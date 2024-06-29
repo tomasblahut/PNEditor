@@ -1,0 +1,25 @@
+<form name="ssPrefForm">
+    <md-input-container class="md-block" style="margin-bottom: 0px;">
+        <label>Lazy covering level</label>
+        <input type="number" name="coveringLevel" ng-model="method.preferences.lazyCoveringLevel" required min="1"
+               max="50">
+
+        <div ng-messages="ssPrefForm.coveringLevel.$error">
+            <div ng-message="required">Specify lazy covering level</div>
+            <div ng-message="min">Allowed minimum is 1</div>
+            <div ng-message="max">Allowed maximum is 50</div>
+        </div>
+    </md-input-container>
+    <md-checkbox aria-label="expandWholeTree" ng-model="method.preferences.expandWholeTree">
+        Expand whole tree
+    </md-checkbox>
+
+    <md-input-container class="md-block">
+        <label>Limit graph nodes to</label>
+        <input type="number" name="graphNodes" ng-model="method.preferences.graphNodeLimit" min="1">
+
+        <div ng-messages="ssPrefForm.graphNodes.$error">
+            <div ng-message="min">Allowed minimum is 1</div>
+        </div>
+    </md-input-container>
+</form>

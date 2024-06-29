@@ -1,0 +1,6 @@
+<div layout="row" layout-padding md-whiteframe="3" class="netStatePanel">
+    <md-icon md-font-icon="fa-bars" class="fa" ng-click="showNetStateDialog()"></md-icon>
+    <span class="title" ng-show="activeSelection">{{markingName}}:</span>
+    <span ng-show="!activeSelection">Select marking</span>
+    <span flex class="ellipsizeText">{{markingValue}}</span>
+</div>

@@ -1,0 +1,15 @@
+<div flex layout="column" style="height: 100%;" class="controlPanel toolPanel">
+    <label class="header">Tools</label>
+    <md-content flex>
+        <md-grid-list md-cols="2" md-gutter="1em" md-row-height="1:1" style="width: 100%;">
+            <md-grid-tile ng-repeat="tool in tools" class="tool">
+                <md-button aria-label="{{tool.name}}" class="md-raised"
+                           ng-click="setActiveTool(tool.type)"
+                           ng-class="{selected: tool.type === activeTool}">
+                    <md-icon md-font-icon="{{tool.icon}}" class="fa"></md-icon>
+                    <md-tooltip md-direction="bottom">{{tool.name}}</md-tooltip>
+                </md-button>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-content>
+</div>

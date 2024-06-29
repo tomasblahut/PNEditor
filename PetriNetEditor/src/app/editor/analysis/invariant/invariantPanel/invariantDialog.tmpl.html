@@ -1,0 +1,45 @@
+<md-dialog aria-label="Invariant details" class="invariantDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Invariant detail</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+        <div class="subHeader">Struct</div>
+        <div layout="column">
+            <div layout="row" class="structContent">
+                <div layout="column" layout-align="center">
+                    <span>{{vectorName}}<sup>T</sup></span>
+                </div>
+                <div layout="column" layout-align="center" style="margin: 0 5px 0 3px;">=</div>
+                <div layout="column" layout-align="center">
+                    <span>{{invariant.structStr}}</span>
+                </div>
+            </div>
+        </div>
+
+        <md-divider></md-divider>
+
+        <div class="subHeader">System</div>
+        <div layout="column" class="systemContent">
+            <div class="systemContent">
+                <div layout="row" layout-align="start center" ng-switch="vectorType"
+                     ng-repeat="sysInvStr in sysInvStrs">
+                <span ng-switch-when="P">
+                    {{vectorName}}<sup>T</sup>&middot;M<sub>0</sub>
+                </span>
+                <span ng-switch-when="T">
+                    &sigma;<sub>{{$index + 1}}</sub>
+                </span>
+                    <span style="margin: 0 5px 0 3px;">=</span>
+                    <span style="white-space: nowrap;">{{sysInvStr}}</span>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

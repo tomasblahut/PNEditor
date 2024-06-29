@@ -1,0 +1,55 @@
+<div flex layout="column" style="height: 100%;" class="controlPanel simulationPanel">
+    <label class="header">Simulation</label>
+    <md-content flex>
+        <div class="controlsRow" layout="column">
+            <md-button aria-label="Restart" class="md-raised"
+                       ng-click="pnManager.restartSimulation()" ng-disabled="data.automaticFiring">
+                <md-icon md-font-icon="fa-stop" class="fa"></md-icon>
+                <md-tooltip md-direction="bottom">Restart</md-tooltip>
+            </md-button>
+
+            <md-button aria-label="Back" class="md-raised"
+                       ng-click="pnManager.goToPreviousStep()" ng-disabled="data.automaticFiring">
+                <md-icon md-font-icon="fa-step-backward" class="fa"></md-icon>
+                <md-tooltip md-direction="bottom">Back</md-tooltip>
+            </md-button>
+
+            <md-button aria-label="Forward" class="md-raised"
+                       ng-click="pnManager.goToNextStep()" ng-disabled="data.automaticFiring">
+                <md-icon md-font-icon="fa-step-forward" class="fa"></md-icon>
+                <md-tooltip md-direction="bottom">Forward</md-tooltip>
+            </md-button>
+        </div>
+
+        <div layout="column">
+            <md-switch ng-model="data.automaticFiring" aria-label="Automatic firing"
+                       ng-change="toggleAutomaticFiring()">
+                Automatic firing
+            </md-switch>
+        </div>
+
+        <div layout="column">
+            <form name="simulationForm">
+                <md-input-container class="md-block">
+                    <label>Firing delay</label>
+                    <input ng-disabled="data.automaticFiring" required min="500" max="5000" type="number" name="delay"
+                           ng-model="data.delay">
+
+                    <div ng-messages="simulationForm.delay.$error">
+                        <div ng-message="required">Enter delay in millisecond</div>
+                        <div ng-message="min">Allowed minimum is 500</div>
+                        <div ng-message="max">Allowed maximum is 5000</div>
+                    </div>
+                </md-input-container>
+            </form>
+        </div>
+
+        <div layout="column">
+            <md-button aria-label="SimBatch" class="md-raised"
+                       ng-click="showBatchDialog()" ng-disabled="data.automaticFiring">
+                <md-icon md-font-icon="fa-random" class="fa"></md-icon>
+                Batch
+            </md-button>
+        </div>
+    </md-content>
+</div>

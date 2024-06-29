@@ -1,0 +1,119 @@
+<md-dialog aria-label="Graph settings" class="ssSettingsDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Graph settings</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="row" layout-padding>
+        <div layout="column" flex>
+
+            <form name="graphTypeForm" layout="column">
+                <div class="header">Graph type</div>
+                <md-radio-group ng-model="settings.graphType" ng-change="updateLayoutSettings()">
+                    <md-radio-button value="tree">Tree</md-radio-button>
+                    <md-radio-button value="graph">Graph</md-radio-button>
+                </md-radio-group>
+            </form>
+
+            <md-divider></md-divider>
+
+            <form name="expandForm" layout="column">
+                <div class="header" style="margin-bottom: 0; margin-top: 8px;">Manual graph expanding</div>
+                <md-input-container class="md-block">
+                    <md-checkbox aria-label="manualExpanding" ng-model="settings.manualExpanding.expandAll"
+                                 style="margin-bottom: 0;">
+                        Expand whole graph
+                    </md-checkbox>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Expand levels</label>
+                    <input type="number" name="expandLevels" ng-model="settings.manualExpanding.expandLevels" required
+                           min="1">
+
+                    <div ng-messages="expandForm.expandLevels.$error">
+                        <div ng-message="required">Specify number of expading levels</div>
+                        <div ng-message="min">Allowed minimum is 1</div>
+                    </div>
+                </md-input-container>
+            </form>
+        </div>
+
+        <md-divider></md-divider>
+
+        <div layout="column" flex>
+            <div class="header">Layout</div>
+
+            <form name="layoutForm" layout="column">
+                <md-input-container class="md-block">
+                    <label>Type</label>
+                    <md-select ng-model="settings.layout.type">
+                        <md-option name="layoutType" ng-repeat="layout in layouts"
+                                   value="{{layout.type}}" required>
+                            {{layout.name}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="layoutForm.layoutType.$error">
+                        <div ng-message="required">Select layout type</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Level distance</label>
+                    <input name="rankSep" type="number" ng-model="settings.layout.options.rankSep" required min="100"
+                           max="500">
+
+                    <div ng-messages="layoutForm.rankSep.$error">
+                        <div ng-message="required">Enter level distance</div>
+                        <div ng-message="min">Allowed minimum is 100</div>
+                        <div ng-message="max">Allowed maximum is 500</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Node distance</label>
+                    <input name="nodeSep" type="number" ng-model="settings.layout.options.nodeSep" required min="100"
+                           max="500">
+
+                    <div ng-messages="layoutForm.nodeSep.$error">
+                        <div ng-message="required">Enter node distance</div>
+                        <div ng-message="min">Allowed minimum is 100</div>
+                        <div ng-message="max">Allowed maximum is 500</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Left margin</label>
+                    <input name="leftMargin" type="number" ng-model="settings.layout.options.leftMargin" required
+                           min="50" max="500">
+
+                    <div ng-messages="layoutForm.leftMargin.$error">
+                        <div ng-message="required">Enter node distance</div>
+                        <div ng-message="min">Allowed minimum is 50</div>
+                        <div ng-message="max">Allowed maximum is 500</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Top margin</label>
+                    <input name="topMargin" type="number" ng-model="settings.layout.options.topMargin" required
+                           min="50" max="500">
+
+                    <div ng-messages="layoutForm.topMargin.$error">
+                        <div ng-message="required">Enter node distance</div>
+                        <div ng-message="min">Allowed minimum is 50</div>
+                        <div ng-message="max">Allowed maximum is 500</div>
+                    </div>
+                </md-input-container>
+            </form>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="save()" ng-disabled="graphTypeForm.$invalid || expandForm.$invalid || layoutForm.$invalid">
+            Save
+        </md-button>
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

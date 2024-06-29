@@ -1,0 +1,7 @@
+<div layout="column" flex style="height: 100%;">
+    <error-panel errors="classificationErrors" style="padding: 0 8px;"></error-panel>
+    <md-content style="padding: 0 8px;">
+        <subclass-panel subclass="subclass" ng-repeat="subclass in subclasses"
+                        ng-class="{'marginBottom' : $last, 'marginTop': $first, 'marginBottomBig' : !$last}"></subclass-panel>
+    </md-content>
+</div>

@@ -1,0 +1,178 @@
+@mixin cardPanel($min-content-height) {
+  .header {
+    padding: 0;
+
+    .title {
+      margin: 10px 0 10px 10px;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
+      color: #009688;
+    }
+
+    .resultIcon {
+      margin: -4px 5px 0 5px;
+      font-size: 24px;
+
+      &.pass {
+        color: #009688;
+      }
+      &.fail {
+        color: #FF4081;
+      }
+      &.unknown {
+        color: #dabc00;
+      }
+    }
+  }
+
+  .subTitle {
+    font-size: 16px;
+    color: #757575;
+    font-weight: bold;
+  }
+
+  .panelContent {
+    min-height: $min-content-height;
+    font-size: 15px;
+    color: #757575;
+
+    .contentList {
+      padding-left: 25px;
+
+      .contentListItem {
+        margin-bottom: 8px;
+      }
+    }
+
+    .additionalData {
+      margin-top: 16px;
+
+      md-icon {
+        margin: 0 5px;
+        font-size: 24px;
+        cursor: pointer;
+        outline: none;
+
+        &:hover {
+          color: #FF4081;
+        }
+        &:first-of-type {
+          margin-left: 10px;
+        }
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin iconRowContent() {
+  .contentRow {
+    height: 30px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #757575;
+
+    sub, sup {
+      font-size: 12px;
+    }
+  }
+
+  .iconColumn {
+    min-width: 35px;
+    width: 35px;
+    max-width: 35px;
+    text-align: center;
+
+    md-icon {
+      font-size: 24px;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        color: #FF4081;
+      }
+    }
+
+    &.left {
+      margin-left: 10px;
+    }
+    &.right {
+      margin-right: 10px;
+    }
+  }
+}
+
+@mixin analysis {
+
+  .invariantPanel {
+    @include cardPanel(200px);
+    height: 100%;
+
+    @include iconRowContent();
+
+    .columnDivider {
+      margin: 0 8px;
+    }
+  }
+
+  .netPropertyPanel {
+    @include cardPanel(200px);
+  }
+
+  .netStatePanel {
+    color: #757575;
+
+    .title {
+      font-weight: bold;
+    }
+
+    md-icon {
+      height: 20px;
+      padding: 0 8px;
+      font-size: 20px;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        color: #FF4081;
+      }
+    }
+  }
+
+  .subclassPanel {
+    @include cardPanel(100px);
+  }
+
+  .placeSubsetPanel {
+    @include cardPanel(200px);
+    height: 100%;
+
+    @include iconRowContent();
+  }
+
+  .cyclesPanel {
+    @include cardPanel(200px);
+    @include iconRowContent();
+  }
+
+  .cycleCoveragePanel {
+    @include cardPanel(100px);
+    @include iconRowContent();
+  }
+
+  .errorPanel {
+    color: #FF4081;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .errorMsg {
+      padding-left: 0;
+    }
+  }
+}

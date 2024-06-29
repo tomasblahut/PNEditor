@@ -1,0 +1,34 @@
+<div layout="column" layout-padding md-whiteframe="3" class="netPropertyPanel">
+    <div layout="row" class="header" layout-align="center center">
+        <span class="title">{{property.type}}</span>
+        <span flex></span>
+        <span ng-show="guiData.statusResolved">
+            <label class="subTitle">Status:</label>
+            <md-icon class="resultIcon fa" ng-class="{'fa-check pass': property.status === 'PASS',
+            'fa-times fail': property.status === 'FAIL',
+            'fa-question unknown': property.status === 'UNDECIDABLE'}"></md-icon>
+        </span>
+    </div>
+    <md-divider></md-divider>
+    <md-content class="panelContent">
+        <div layout="column" ng-show="guiData.hasReasons">
+            <div class="subTitle">Reasons</div>
+            <ul class="contentList">
+                <li class="contentListItem" ng-repeat="reason in property.reasons">
+                    {{reason}}
+                </li>
+            </ul>
+        </div>
+
+        <div layout="column" ng-show="guiData.hasAdditionalData" ng-include="guiData.templateUrl"></div>
+
+        <div layout="column" ng-show="guiData.hasErrors">
+            <div class="subTitle">Errors</div>
+            <ul class="contentList">
+                <li class="contentListItem" ng-repeat="error in property.errors">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+    </md-content>
+</div>

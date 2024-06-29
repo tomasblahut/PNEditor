@@ -1,0 +1,59 @@
+<div flex layout="column" style="height: 100%;" class="controlPanel objectPropertyPanel">
+    <label class="header">Properties</label>
+
+    <label class="infoLabel" ng-hide="editedObject">
+        No editable object selected
+    </label>
+
+    <form layout="column" flex style="height: 100%;" ng-show="editedObject" name="propertyForm" ng-submit="save()">
+        <md-content flex>
+            <div ng-switch on="editedObject.type">
+                <div ng-switch-when="place">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input required name="placeName" ng-model="editedObject.name">
+
+                        <div ng-messages="propertyForm.placeName.$error">
+                            <div ng-message="required">Enter name</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Tokens</label>
+                        <input required min="0" type="number" name="placeTokens" ng-model="editedObject.tokens">
+
+                        <div ng-messages="propertyForm.placeTokens.$error">
+                            <div ng-message="required">Enter number of tokens</div>
+                            <div ng-message="min">Allowed minimum is 1</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div ng-switch-when="transition">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input required name="transitionName" ng-model="editedObject.name">
+
+                        <div ng-messages="propertyForm.transitionName.$error">
+                            <div ng-message="required">Enter name</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div ng-switch-when="arc">
+                    <md-input-container class="md-block">
+                        <label>Multiplicity</label>
+                        <input required min="1" type="number" name="arcMultiplicity"
+                               ng-model="editedObject.multiplicity">
+
+                        <div ng-messages="propertyForm.arcMultiplicity.$error">
+                            <div ng-message="required">Enter number of tokens</div>
+                            <div ng-message="min">Allowed minimum is 1</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <label class="infoLabel" ng-switch-default>No editable object selected</label>
+            </div>
+        </md-content>
+        <md-button type="submit" class="md-primary" ng-disabled="propertyForm.$invalid">
+            Save changes
+        </md-button>
+    </form>
+</div>

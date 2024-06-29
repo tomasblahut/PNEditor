@@ -1,0 +1,50 @@
+<md-dialog class="saveProjectDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Save project</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+        <form name="saveForm" ng-hide="saving">
+            <md-input-container class="md-block">
+                <label>Name</label>
+                <input ng-disabled="!newNet" name="name" ng-model="persistenceData.name"
+                       required>
+
+                <div ng-messages="saveForm.name.$error">
+                    <div ng-message="required">Enter project name</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Storage</label>
+                <md-select ng-disabled="!newNet" ng-model="persistenceData.storageType">
+                    <md-option name="storage" ng-repeat="persOpt in persistenceOptions"
+                               value="{{persOpt.type}}" required>
+                        {{persOpt.guiName}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="saveForm.storage.$error">
+                    <div ng-message="required">Select storage</div>
+                </div>
+            </md-input-container>
+        </form>
+        <div layout="row" layout-align="start center" class="progressBar" ng-show="saving">
+            <div layout="column" flex>
+                <span>{{saving.msg}}</span>
+                <span ng-show="saving.error" class="errorDetail">{{saving.error}}</span>
+            </div>
+            <md-icon ng-class="{'fa-spinner fa-spin': saving.status === 'IN_PROGRESS', 'fa-times failed': saving.status === 'FAIL',
+                    'fa-check passed': saving.status === 'PASS'}"
+                     class="fa">
+            </md-icon>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-show="!saving" ng-disabled="saveForm.$invalid" ng-click="save()">
+            Save
+        </md-button>
+        <md-button ng-disabled="saving.status === 'IN_PROGRESS'" ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

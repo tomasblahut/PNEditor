@@ -1,0 +1,64 @@
+<div layout="column" flex layout-padding md-whiteframe="3" class="invariantPanel">
+    <div layout="row" class="header" layout-align="center center">
+        <span class="title">{{type}} - invariants</span>
+        <span flex></span>
+        <span ng-hide="hasInvariants" layout-padding>No data</span>
+    </div>
+    <md-divider></md-divider>
+
+    <div layout="row" class="subTitle">
+        <span flex>Structural</span>
+        <span class="columnDivider"></span>
+        <span flex>System</span>
+        <span class="iconColumn left"></span>
+        <span class="iconColumn right"></span>
+    </div>
+
+    <md-virtual-repeat-container md-top-index="topIndex" ng-show="hasInvariants" flex>
+        <div layout="row" layout-align=" center" md-virtual-repeat="inv in invariants"
+             class="contentRow paddingHorizontal" md-item-size="40">
+            <div layout="row" flex>
+                <div layout="column" layout-align="center">
+                    <span>
+                    {{vectorName}}<sup>T</sup><sub class="pushedBackIndice">{{$index +1}}</sub>
+                    </span>
+                </div>
+
+                <div layout="column" layout-align="center" style="margin: 0 5px 0 3px;">=</div>
+                <div layout="column" layout-align="center" style="overflow: hidden;">
+                    <span class="ellipsizeText">{{inv.structStr}}</span>
+                </div>
+            </div>
+            <md-divider class="columnDivider"></md-divider>
+            <div layout="row" flex ng-switch="type">
+                <div layout="column" layout-align="center" ng-switch-when="P">
+                    <div layout="row" layout-align=" center">
+                        <span>
+                            {{vectorName}}<sup>T</sup><sub class="pushedBackIndice">{{$index +1}}</sub>
+                        </span>
+                        &middot;M<sub>0</sub>
+                    </div>
+                </div>
+                <div layout="column" layout-align="center" ng-switch-when="T">
+                    <span>
+                        &sigma;<sub>1</sub>
+                    </span>
+                </div>
+
+                <div layout="column" layout-align="center" style="margin: 0 5px 0 3px;">=</div>
+                <div layout="column" layout-align="center" style="overflow: hidden;">
+                    <span class="ellipsizeText">{{inv.systemStr}}</span>
+                </div>
+            </div>
+
+            <div layout="column" layout-align="center" class="iconColumn left">
+                <md-icon md-font-icon="fa-eye" class="fa" ng-mouseover="highlightInvariant(inv)"
+                         ng-mouseleave="clearHighlight()"></md-icon>
+            </div>
+
+            <div layout="column" layout-align="center" class="iconColumn right">
+                <md-icon md-font-icon="fa-bars" class="fa" ng-click="showDetailsOf(inv)"></md-icon>
+            </div>
+        </div>
+    </md-virtual-repeat-container>
+</div>

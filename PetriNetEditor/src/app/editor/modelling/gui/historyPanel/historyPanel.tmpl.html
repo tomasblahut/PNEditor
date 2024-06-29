@@ -1,0 +1,18 @@
+<div flex layout="column" style="height: 100%;" class="controlPanel historyPanel">
+    <label class="header">History</label>
+    <md-content layout="column" flex style="height: 100%;">
+
+        <md-virtual-repeat-container md-top-index="topIndex" style="height: 380px;">
+            <div md-virtual-repeat="step in steps" md-item-size="42">
+                <md-button aria-label="simStep" class="md-raised simulationStep"
+                           ng-class="{'active' : step.id === currentStepId}"
+                           ng-click="goToStep(step.id)" ng-disabled="automaticFiring">
+                    <span class="trans">{{step.transName}}</span>
+                    <md-icon class="fa  fa-long-arrow-right"></md-icon>
+                    <span class="state">{{step.stateName}}</span>
+                </md-button>
+            </div>
+        </md-virtual-repeat-container>
+
+    </md-content>
+</div>

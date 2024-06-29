@@ -1,0 +1,36 @@
+<md-dialog class="simulationBatchDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Simulation batch</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+        <form name="batchForm" ng-show="data.status==='init'">
+            <md-input-container class="md-block">
+                <label>Number of steps</label>
+                <input type="number" name="stepCount" ng-model="data.batchSteps" required min="10" max="50000">
+
+                <div ng-messages="batchForm.stepCount.$error">
+                    <div ng-message="required">Enter number of steps</div>
+                    <div ng-message="min">Allowed minimum is 10</div>
+                    <div ng-message="max">Allowed maximum is 10000</div>
+                </div>
+            </md-input-container>
+        </form>
+        <div layout="row" layout-aling="center" class="infoPanel" ng-show="data.status!=='init'">
+            <span layout="column" layout-align="center start" flex>{{data.message}}</span>
+            <md-icon class="fa" ng-class="{'fa-check': data.status === 'finishedOK',
+            'fa-times': data.status === 'finishedError',
+            'fa-spinner fa-spin': data.status === 'inProgress'}">
+            </md-icon>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-show="data.status ==='init'" ng-disabled="batchForm.$invalid" ng-click="executeBatch()">Execute
+        </md-button>
+        <md-button ng-show="data.status ==='inProgress'" ng-click="cancelBatch()">Cancel</md-button>
+        <md-button ng-disabled="data.status === 'inProgress'" ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

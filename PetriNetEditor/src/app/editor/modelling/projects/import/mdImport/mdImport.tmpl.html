@@ -1,0 +1,11 @@
+<div layout="row" class="mdImport">
+    <input id="fileInput" name="file" type="file" class="ng-hide">
+    <md-button id="uploadButton" aria-label="Import" class="md-primary faButton">
+        <md-icon md-font-icon="fa-upload" class="fa"
+                 ng-class="{'fa-upload': !importing, 'fa-spinner fa-spin': importing}"></md-icon>
+        Import
+    </md-button>
+    <div layout="column" layout-align="center start" class="importInfo" flex>
+        <span ng-show="errMsg" class="md-warn">{{errMsg}}</span>
+    </div>
+</div>

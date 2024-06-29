@@ -1,0 +1,44 @@
+@mixin global {
+  .md-button.faButton {
+    md-icon {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+  }
+
+  md-menu-item md-checkbox {
+    margin-left: 15px;
+  }
+
+  .marginBottom {
+    margin-bottom: 8px;
+  }
+
+  .marginBottomBig {
+    margin-bottom: 16px;
+  }
+
+  .marginTop {
+    margin-top: 8px;
+  }
+
+  .marginTopBig {
+    margin-top: 16px;
+  }
+
+  .paddingHorizontal {
+    padding: 0 8px;
+  }
+
+  .ellipsizeText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  sub.pushedBackIndice,
+  sup.pushedBackIndice {
+    position: relative;
+    left: -.5em;
+  }
+}

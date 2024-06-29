@@ -1,0 +1,22 @@
+<md-dialog aria-label="Subclass" class="subclassDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>{{subclassName}}</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+        <div layout="row" class="header">
+            {{errorsTitle}}
+        </div>
+        <div class="errorList">
+            <div layout="row" ng-repeat="error in errors" class="errorRow">
+                {{error}}
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

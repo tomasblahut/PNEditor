@@ -1,0 +1,22 @@
+<md-toolbar class="small">
+    <div class="md-toolbar-tools">
+        <span>Analysis</span>
+        <span flex></span>
+         <md-button aria-label="Settings" class="md-icon-button" ng-click="showSettingsDialog()">
+            <md-tooltip md-direction="bottom">Settings</md-tooltip>
+            <md-icon md-font-icon="fa-gear" class="fa menuIcon"></md-icon>
+        </md-button>
+        <md-button aria-label="Refresh" class="md-icon-button" ng-click="refresh()">
+            <md-tooltip md-direction="bottom">Refresh</md-tooltip>
+            <md-icon md-font-icon="fa-refresh" class="fa menuIcon"
+                     ng-class="{'fa-spin' : guiData.refreshing}"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-tabs md-selected="guiData.currentTab" style="padding: 0;">
+    <md-tab label="Properties" ui-sref="netProperties"></md-tab>
+    <md-tab ng-repeat="analysisTab in guiData.analysisTabs" label="{{analysisTab.name}}"
+            ui-sref="{{analysisTab.link}}"></md-tab>
+</md-tabs>
+
+<div ui-view layout="column" flex style="height: 100%; padding: 8px 0;"></div>

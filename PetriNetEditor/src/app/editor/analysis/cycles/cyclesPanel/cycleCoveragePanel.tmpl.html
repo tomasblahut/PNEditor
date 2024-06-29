@@ -1,0 +1,43 @@
+<div layout="column" layout-padding md-whiteframe="3" class="cycleCoveragePanel">
+    <div layout="row" class="header" layout-align="center center">
+        <span class="title">Net cycle coverage</span>
+        <span flex></span>
+        <span ng-hide="hasData" layout-padding>No data</span>
+    </div>
+    <md-divider></md-divider>
+
+    <md-content flex class="panelContent">
+        <div layout="row" class="contentRow" ng-show="hasData">
+            <div layout="column" layout-align="center"> {{placesNotCovered ? 'Places not covered by cycles' :
+                'Each place belongs to some elementary cycle carrier'}}
+            </div>
+            <div ng-show="placesNotCovered" layout="column" layout-align="center" style="margin: 0 5px 0 3px;">:</div>
+            <div layout="column" layout-align="center" flex>
+                <span class="ellipsizeText">{{placesNotCovered}}</span>
+            </div>
+            <div layout="column" layout-align="center" class="iconColumn left" ng-show="placesNotCovered">
+                <md-icon md-font-icon="fa-eye" class="fa" ng-mouseover="highlightNotCoveredPlaces()"
+                         ng-mouseleave="clearHighlight()"></md-icon>
+            </div>
+            <div layout="column" layout-align="center" class="iconColumn right" ng-show="placesNotCovered">
+                <md-icon md-font-icon="fa-bars" class="fa" ng-click="showAllNotCoveredPlaces()"></md-icon>
+            </div>
+        </div>
+        <div layout="row" class="contentRow" ng-show="hasData">
+            <div layout="column" layout-align="center"> {{transNotCovered ? 'Transitions not covered by cycles' :
+                'Each transition belongs to some elementary cycle carrier'}}
+            </div>
+            <div ng-show="transNotCovered" layout="column" layout-align="center" style="margin: 0 5px 0 3px;">:</div>
+            <div layout="column" layout-align="center" flex>
+                <span class="ellipsizeText">{{transNotCovered}}</span>
+            </div>
+            <div layout="column" layout-align="center" class="iconColumn left" ng-show="transNotCovered">
+                <md-icon md-font-icon="fa-eye" class="fa" ng-mouseover="highlightNotCoveredTrans()"
+                         ng-mouseleave="clearHighlight()"></md-icon>
+            </div>
+            <div layout="column" layout-align="center" class="iconColumn right" ng-show="transNotCovered">
+                <md-icon md-font-icon="fa-bars" class="fa" ng-click="showAllNotCoveredTrans()"></md-icon>
+            </div>
+        </div>
+    </md-content>
+</div>

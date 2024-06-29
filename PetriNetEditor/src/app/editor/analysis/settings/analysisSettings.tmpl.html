@@ -1,0 +1,50 @@
+<md-dialog class="analysisSettingsDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Analysis settings</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding layout="row" class="analysisDiagContent">
+        <div layout="column" flex layout-padding>
+            <h3 class="title">Analysis methods</h3>
+
+            <md-content flex>
+                <div layout="column" class="analysisRow" ng-repeat="method in analysisMethods">
+                    <div layout="row" class="header">
+                        {{method.name}}
+                        <span flex></span>
+                        <md-checkbox aria-label="analysisMethod" ng-model="method.enabled"></md-checkbox>
+                    </div>
+                    <div layout="column" ng-include src="method.templateUrl" ng-show="method.enabled"
+                         style="padding-left: 15px;">
+                    </div>
+                    <md-divider ng-show="!$last"></md-divider>
+                </div>
+            </md-content>
+        </div>
+        <md-divider style="padding: 0;"></md-divider>
+        <div layout="column" flex layout-padding>
+            <h3 class="title">Properties to check</h3>
+            
+            <md-content flex>
+                <div layout="column" class="propertyRow" ng-repeat="property in propertiesToCheck">
+                    <div layout="row" class="header">
+                        <md-checkbox ng-model="property.enabled">
+                            {{property.name}}
+                        </md-checkbox>
+                    </div>
+                    <div layout="column" ng-include src="property.templateUrl" ng-show="property.enabled"
+                        style="padding-left: 15px;">
+                    </div>
+                </div>
+                
+            </md-content>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="saveSettings()">Save</md-button>
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

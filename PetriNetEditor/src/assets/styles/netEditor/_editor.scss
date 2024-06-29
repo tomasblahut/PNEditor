@@ -1,0 +1,250 @@
+@mixin editor {
+  .md-select-menu-container.md-active {
+    z-index: 999;
+  }
+
+  md-toolbar.small {
+    min-height: 42px;
+
+    .md-toolbar-tools {
+      height: 42px;
+      max-height: 42px;
+    }
+  }
+
+  .menuIcon {
+    font-size: 24px;
+  }
+
+  .controlPanel {
+    padding: 4px;
+
+    .header {
+      margin-bottom: 4px;
+      font-size: 20px;
+      color: #757575;
+    }
+  }
+
+  .toolPanel {
+    .tool {
+      figure {
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      .md-button {
+        width: 100%;
+        min-width: 0;
+
+        height: 100%;
+        min-height: 0;
+
+        padding: 0;
+        margin: 0;
+
+        md-icon {
+          height: auto;
+          font-size: 20px;
+        }
+
+        &.selected {
+          background-color: #FF4081;
+          md-icon {
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
+  }
+
+  .objectPropertyPanel {
+    .infoLabel {
+      color: #A3A3A3;
+      font-size: 16px;
+    }
+  }
+
+  .simulationPanel {
+    .md-button {
+      height: 40px;
+      min-height: 0;
+
+      margin: 6px 2px 10px 2px;
+
+      md-icon {
+        height: auto;
+        font-size: 20px;
+      }
+    }
+
+    .controlsRow {
+      margin-bottom: 10px;
+    }
+
+    md-switch .md-container {
+      margin-right: 8px;
+    }
+  }
+
+  .historyPanel {
+    .header {
+      margin-bottom: 10px;
+    }
+
+    .simulationStep {
+      min-width: 0;
+      width: 100%;
+      min-height: 0;
+      height: 34px;
+
+      margin: 4px 0;
+      font-size: 18px;
+
+      md-icon {
+        font-size: 18px;
+        height: auto;
+      }
+
+      &.active {
+        background-color: #FF4081;
+        color: #FFFFFF;
+
+        &:hover {
+          background-color: #FF4081;
+        }
+      }
+    }
+  }
+
+  .ssPropertyPanel {
+    margin-top: 10px;
+    min-height: 60px;
+    max-height: 60px;
+    overflow-y: hidden;
+
+    &.visible {
+      max-height: 225px;
+      min-height: 225px;
+    }
+
+    md-icon {
+      font-size: 24px;
+
+      &.passed {
+        color: #00BFA5;
+      }
+
+      &.failed {
+        color: #F56B6B;
+      }
+
+      &.undecided {
+        color: #80d8ff;
+      }
+    }
+
+    md-toolbar {
+      height: 60px;
+      min-height: 60px;
+
+      md-icon {
+        font-size: 24px;
+      }
+    }
+
+    table {
+      position: relative;
+      display: flex;
+      flex: 1;
+      margin-top: 5px;
+
+      thead {
+        height: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      tbody {
+        flex: 1;
+        width: 100%;
+        margin-top: 30px;
+        overflow-y: auto;
+      }
+
+      th {
+        color: rgba(0, 0, 0, 0.54);
+        text-align: left;
+      }
+
+      tr {
+        display: flex;
+        flex-direction: row;
+      }
+
+      td, th {
+        height: 25px;
+        line-height: 25px;
+
+        box-sizing: border-box;
+        padding: 0px 10px;
+        margin-bottom: 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 135px;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 80px;
+      }
+
+      td:nth-child(2) {
+        text-align: center;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3) {
+        flex: 1;
+      }
+
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 30px;
+        padding: 0;
+        text-align: center;
+
+        md-icon {
+          width: 100%;
+          cursor: pointer;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .additionalMenu {
+    padding-bottom: 2px;
+    bottom: 0px;
+    right: 0px;
+
+    position: absolute;
+    z-index: 50;
+
+    background-color: #FFFFFF;
+    border-left: 1px solid #757575;
+    border-top: 1px solid #757575;
+    border-top-left-radius: 10px;
+
+    md-icon:hover {
+      color: #FF4081;
+    }
+  }
+}

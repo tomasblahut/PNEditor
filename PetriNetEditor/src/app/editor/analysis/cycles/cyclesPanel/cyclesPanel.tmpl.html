@@ -1,0 +1,35 @@
+<div layout="column" flex layout-padding md-whiteframe="3" class="cyclesPanel">
+    <div layout="row" class="header" layout-align="center center">
+        <span class="title">Elementary cycles</span>
+        <span flex></span>
+        <span ng-hide="hasCycles" layout-padding>No data</span>
+    </div>
+    <md-divider></md-divider>
+
+    <md-virtual-repeat-container md-top-index="topIndex" ng-show="hasCycles" flex>
+        <div layout="row" layout-align=" center" md-virtual-repeat="cycle in cycles"
+             class="contentRow paddingHorizontal"
+             md-item-size="40">
+            <div layout="row" flex>
+                <div layout="column" layout-align="center">
+                    <span>
+                    C<sub>{{$index + 1}}</sub>
+                    </span>
+                </div>
+
+                <div layout="column" layout-align="center" style="margin: 0 5px 0 3px;">=</div>
+                <div layout="column" layout-align="center" style="overflow: hidden;">
+                    <span class="ellipsizeText">{{cycle.cycleStr}}</span>
+                </div>
+            </div>
+            <div layout="column" layout-align="center" class="iconColumn left">
+                <md-icon md-font-icon="fa-eye" class="fa" ng-mouseover="highlightCycle(cycle)"
+                         ng-mouseleave="clearHighlight()"></md-icon>
+            </div>
+
+            <div layout="column" layout-align="center" class="iconColumn right">
+                <md-icon md-font-icon="fa-bars" class="fa" ng-click="showDetailsOf(cycle, $index + 1)"></md-icon>
+            </div>
+        </div>
+    </md-virtual-repeat-container>
+</div>

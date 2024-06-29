@@ -1,0 +1,37 @@
+<div layout="column" layout-padding md-whiteframe="3" class="subclassPanel">
+    <div layout="row" class="header" layout-align="center center">
+        <span class="title">{{subclass.type}}</span>
+        <span flex></span>
+        <span>
+            <label class="subTitle">Status:</label>
+            <md-icon class="resultIcon fa" ng-class="{'fa-check pass': subclass.matches,
+            'fa-times fail': !subclass.matches}"></md-icon>
+        </span>
+    </div>
+    <md-divider></md-divider>
+    <md-content class="panelContent">
+        <div layout="column">
+            <div class="subTitle">Reasons</div>
+            <ul class="contentList">
+                <li class="contentListItem">{{subclass.reason}}</li>
+            </ul>
+        </div>
+
+
+        <div layout="column" ng-show="guiData.hasAdditionalData">
+            <div class="subTitle">Additional data</div>
+            <div layout="row" class="additionalData">
+                <div layout="column" layout-align="center">{{guiData.additionalDataTitle}}</div>
+                <div layout="column" layout-align="center" style="margin: 0 3px;">:</div>
+
+                <div layout="column" flex layout-align="center">
+                    <span class="ellipsizeText">{{guiData.additionalDataStr}}</span>
+                </div>
+
+                <md-icon md-font-icon="fa-eye" class="fa" ng-mouseover="highlightAdditionalData()"
+                         ng-mouseleave="clearHighlight()"></md-icon>
+                <md-icon md-font-icon="fa-bars" class="fa" ng-click="showAdditionalData()"></md-icon>
+            </div>
+        </div>
+    </md-content>
+</div>

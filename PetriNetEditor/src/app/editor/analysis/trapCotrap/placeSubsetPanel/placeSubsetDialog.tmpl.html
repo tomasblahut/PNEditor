@@ -1,0 +1,20 @@
+<md-dialog aria-label="Subset details" class="placeSubsetDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>{{subsetType}} {{subsetName}}</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" layout-padding>
+        <div layout="column" class="subHeader">Places</div>
+        <div class="subsetList">
+            <div layout="row" ng-repeat="placeName in subsetPlaceNames" class="subsetRow">
+                {{placeName}}
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

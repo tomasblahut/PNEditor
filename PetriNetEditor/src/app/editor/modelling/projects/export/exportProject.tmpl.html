@@ -1,0 +1,31 @@
+<md-dialog class="exportProjectDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Export project</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+        <form name="exportForm">
+            <md-input-container class="md-block">
+                <label>Format</label>
+                <md-select ng-model="exportOptions.selectedFormat.format">
+                    <md-option name="format" ng-repeat="exportFormat in exportOptions.formats"
+                               value="{{exportFormat.format}}" required>
+                        {{exportFormat.name}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="exportForm.format.$error">
+                    <div ng-message="required">Select format</div>
+                </div>
+            </md-input-container>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-disabled="exportForm.$invalid" ng-click="export()">
+            Export
+        </md-button>
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

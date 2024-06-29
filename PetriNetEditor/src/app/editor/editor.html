@@ -1,0 +1,6 @@
+<div layout="row" layout-fill>
+    <div ui-view="modelView" layout="column" flex layout-padding style="height: 100%;"></div>
+    <md-divider style="margin: 8px 2px;"></md-divider>
+    <div ng-show="editor.settings.analysisEnabled" ui-view="analysisView" layout="column" flex layout-padding
+         style="height: 100%;"></div>
+</div>

@@ -1,0 +1,30 @@
+<error-panel errors="ssErrors"></error-panel>
+
+<div layout="column" flex class="marginTop marginBottom" style="position: relative;">
+    <spinner name="analysisSpinner">
+        <div ng-include="'utilsTemplates/spinner.tmpl.html'"></div>
+    </spinner>
+
+    <div layout="row" class="additionalMenu">
+        <md-button aria-label="Navigate home" class="md-icon-button" ng-click="navigateHome()"
+                   style="margin-right: 0;">
+            <md-tooltip md-direction="top">Root</md-tooltip>
+            <md-icon md-font-icon="fa-home" class="fa menuIcon"></md-icon>
+        </md-button>
+        <md-button aria-label="Redraw graph" class="md-icon-button" ng-click="rebuildStateSpace()"
+                   style="margin-right: 0;">
+            <md-tooltip md-direction="top">Redraw graph</md-tooltip>
+            <md-icon md-font-icon="fa-refresh" class="fa menuIcon"></md-icon>
+        </md-button>
+        <md-button aria-label="Graph settings" class="md-icon-button" ng-click="openSettingsDialog()">
+            <md-tooltip md-direction="top">Graph Settings</md-tooltip>
+            <md-icon md-font-icon="fa-cogs" class="fa menuIcon"></md-icon>
+        </md-button>
+    </div>
+
+    <canvas id="ssCanvas" class="easel-canvas" flex md-whiteframe="3" resize-detector>
+        Your browser does not support canvas element
+    </canvas>
+</div>
+
+<net-state-panel></net-state-panel>

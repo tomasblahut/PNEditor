@@ -1,0 +1,58 @@
+<md-dialog class="userProjectsDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Projects</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding layout="column">
+        <div layout="row">
+            <div layout="column" flex class="loadResults" layout-align="center start">
+                <div layout="row" class="resultRow">
+                    <span>Loaded storages: </span>
+                    <span flex class="resultList">{{loadResult.success}}</span>
+                </div>
+                <div layout="row" class="resultRow">
+                    <span>Error storages: </span>
+                    <span flex class="resultList fail">{{loadResult.fail}}</span>
+                </div>
+            </div>
+            <md-button aria-label="Obnovit" class="md-icon-button" ng-click="refreshList()">
+                <md-icon ng-class="{'fa-refresh': !refreshing, 'fa-spinner fa-spin': refreshing}"
+                         class="fa diagIcon greenHover"></md-icon>
+            </md-button>
+        </div>
+        <md-divider class="top"></md-divider>
+        <div class="netList" layout-padding>
+            <div class="netListItem" layout="row" layout-align="start center"
+                 ng-repeat="netEntry in netList track by netEntry.id">
+                <div flex>
+                    <div class="header">
+                        {{netEntry.name}}
+                    </div>
+                    <div class="detail">
+                        {{netEntry.storageTypeGui}}
+                    </div>
+                    <div class="detail">
+                        {{netEntry.lastUpdate}}
+                    </div>
+                </div>
+
+                <md-button aria-label="Open" class="md-icon-button" ng-click="openNet(netEntry)">
+                    <md-icon md-font-icon="fa-folder-open" class="fa diagIcon greenHover"></md-icon>
+                </md-button>
+                <md-button aria-label="Delete" class="md-icon-button" ng-click="deleteNet(netEntry, $index)">
+                    <md-icon md-font-icon="fa-trash" class="fa diagIcon redHover"></md-icon>
+                </md-button>
+            </div>
+        </div>
+        <md-divider class="bottom"></md-divider>
+        <div layout="row">
+            <md-import on-net-imported="importNet(petriNet)"></md-import>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

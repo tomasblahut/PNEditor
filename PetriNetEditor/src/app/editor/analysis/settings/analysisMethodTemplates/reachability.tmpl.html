@@ -1,0 +1,14 @@
+<form name="reachForm">
+
+    <div ng-repeat = "(id, value) in property.preferences.placeIds">
+        <md-input-container class="md-block">
+            <label>  {{property.preferences.placeNames[id]}} </label>
+            <input type="number" name = "tokens" ng-model="property.preferences.placeIds[id]" min="0">
+            
+            <div ng-messages="reachForm.tokens.$error">
+                <div ng-message="min">Allowed minimum is 0</div>
+            </div>
+        </md-input-container>
+    </div>
+    
+</form>

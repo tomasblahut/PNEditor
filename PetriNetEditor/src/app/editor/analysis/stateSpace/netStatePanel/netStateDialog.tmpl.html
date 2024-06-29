@@ -1,0 +1,30 @@
+<md-dialog aria-label="Net state" class="netStateDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>
+                <span>Marking {{markingName}}</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" layout-padding>
+        <div layout="column" class="searchBar">
+            <md-input-container md-no-float class="md-block">
+                <md-icon class="fa fa-search"></md-icon>
+                <input ng-model="searchStr" placeholder="Search">
+            </md-input-container>
+        </div>
+        <div layout="row" class="header">
+            <span flex style="padding-right: 0;">Place</span>
+            <span flex style="padding-left: 0;">Tokens</span>
+        </div>
+        <div class="stateList">
+            <div layout="row" ng-repeat="state in netState | markingFilter:searchStr" class="stateRow">
+                <span flex class="placeName">{{state.placeName}}</span>
+                <span flex>{{state.tokens}}</span>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" layout-align="end center">
+        <md-button ng-click="close()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>
